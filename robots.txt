@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.rmphysiotherapy.com/sitemap.xml
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Disallow any admin or private areas
+Disallow: /admin/
+Disallow: /.htaccess
+Disallow: /private/
+
+# Allow all major file types needed for SEO
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.gif
+Allow: *.webp
+Allow: *.svg
+Allow: *.pdf
+
+# Crawl delay (optional - remove if not needed)
+# Crawl-delay: 1

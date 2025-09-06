@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive physiotherapy services in Pretoria East - Sports rehabilitation, musculoskeletal care, neurological rehab, chest physiotherapy, corporate wellness & home visits.">
+    <meta name="keywords" content="physiotherapy services, sports rehabilitation, musculoskeletal therapy, neurological rehab, chest physiotherapy, corporate wellness, home visits, Pretoria East">
+    <meta name="author" content="RM Physiotherapy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.rmphysiotherapy.com/services.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Physiotherapy Services - Sports Rehab, Musculoskeletal Care & More | RM Physiotherapy">
+    <meta property="og:description" content="Professional physiotherapy services in Pretoria East including sports rehabilitation, musculoskeletal care, neurological rehab, chest physiotherapy and home visits.">
+    <meta property="og:image" content="https://www.rmphysiotherapy.com/images/Logo.png">
+    <meta property="og:url" content="https://www.rmphysiotherapy.com/services.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Physiotherapy Services | RM Physiotherapy">
+    <meta name="twitter:description" content="Professional physiotherapy services including sports rehabilitation, musculoskeletal care, and home visits in Pretoria East.">
+    <meta name="twitter:image" content="https://www.rmphysiotherapy.com/images/Logo.png">
+    
+    <title>Physiotherapy Services - Sports Rehab, Musculoskeletal Care & More | RM Physiotherapy</title>
+    
+    <!-- Preconnect & stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "RM Physiotherapy",
+        "medicalSpecialty": [
+            "Sports Rehabilitation",
+            "Musculoskeletal Physiotherapy",
+            "Neurological Rehabilitation",
+            "Chest Physiotherapy",
+            "Corporate Wellness"
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Physiotherapy Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "MedicalProcedure",
+                        "name": "Sports & Running Rehabilitation"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "MedicalProcedure",
+                        "name": "Musculoskeletal & Orthopaedic Care"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "MedicalProcedure",
+                        "name": "Neurological Rehabilitation"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "MedicalProcedure",
+                        "name": "Chest Physiotherapy"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.rmphysiotherapy.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://www.rmphysiotherapy.com/services.html"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Preloader Styles -->
+    <style>
+      #preloader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        z-index: 99999;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+        opacity: 1;
+        visibility: visible;
+      }
+      .preloader-inner {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .spinner-ring {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 5px solid rgba(0, 102, 204, 0.15);
+        border-top-color: #0066cc;
+        animation: spin 1.2s linear infinite;
+      }
+      .preloader-logo {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+        z-index: 2;
+      }
+      #preloader.preloader-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+
+    <!-- Preloader Script -->
+    <script>
+      window.addEventListener('load', function () {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          setTimeout(() => {
+            preloader.classList.add('preloader-hidden');
+            setTimeout(() => preloader.remove(), 700);
+          }, 300);
+        }
+      });
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader && !preloader.classList.contains('preloader-hidden')) {
+          preloader.classList.add('preloader-hidden');
+          setTimeout(() => preloader.remove(), 700);
+        }
+      }, 6000);
+    </script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader" aria-hidden="true">
+      <div class="preloader-inner" role="status" aria-label="Loading">
+        <div class="spinner-ring"></div>
+        <img class="preloader-logo" src="images/logoicon.png" alt="RM Physiotherapy logo">
+      </div>
+    </div>
+
+    <!-- Skip to content link -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Utility Bar -->
+    <div class="utility-bar">
+        <div class="container">
+            <div class="utility-links">
+                <a href="/faq.html">FAQ</a>
+                <a href="/appointments.html">Appointments</a>
+                <a href="/privacypolicy.html">Privacy Policy</a>
+            </div>
+            <div class="utility-contact">
+                <a href="mailto:info@rmphysiotherapy.com">info@rmphysiotherapy.com</a>
+                <a href="tel:+27646533690">+27 (0) 64 653 3690</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Main navigation">
+                <a href="/" class="logo" aria-label="RM Physiotherapy Home">
+                    <img src="images/Logo.png" alt="RM Physiotherapy Logo">
+                </a>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="/index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="/services.html" class="nav-link">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/services.html#sports-rehab">Sports & Running Rehab</a></li>
+                            <li><a href="/services.html#musculoskeletal">Musculoskeletal & Orthopaedic</a></li>
+                            <li><a href="/services.html#neurological">Neurological Rehab</a></li>
+                            <li><a href="/services.html#chest-physio">Chest Physiotherapy</a></li>
+                            <li><a href="/services.html#corporate">Corporate Wellness</a></li>
+                            <li><a href="/services.html#home-visits">Home Visit Services</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="/conditions/" class="nav-link">Conditions</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/conditions/back-pain.html">Back Pain</a></li>
+                            <li><a href="/conditions/neck-pain.html">Neck Pain</a></li>
+                            <li><a href="/conditions/sciatica.html">Sciatica</a></li>
+                            <li><a href="/conditions/plantar-fasciitis.html">Plantar Fasciitis</a></li>
+                            <li><a href="/conditions/achilles-tendinopathy.html">Achilles Tendinopathy</a></li>
+                            <li><a href="/conditions/arthritis.html">Arthritis</a></li>
+                            <li><a href="/conditions/headaches-tmj.html">Headaches & TMJ</a></li>
+                            <li><a href="/conditions/post-op-rehab.html">Post-Op Rehab</a></li>
+                            <li><a href="/conditions/balance-mobility.html">Balance & Mobility</a></li>
+                            <li><a href="/conditions/copd-bronchitis.html">COPD & Bronchitis</a></li>
+                            <li><a href="/conditions/paediatric-chest-physio.html">Paediatric Chest Physio</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/blog/" class="nav-link">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact.html" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/appointments.html" class="nav-link btn btn-primary" style="margin-left: 10px;">Book Appointment</a>
+                    </li>
+                </ul>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="/index.html">Home</a></li>
+                <li class="breadcrumb-separator">></li>
+                <li aria-current="page">Services</li>
+            </ol>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="hero" style="background: linear-gradient(rgba(21, 95, 130, 0.8), rgba(21, 95, 130, 0.8)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); padding: 80px 0;">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Our Physiotherapy Services</h1>
+                    <p>Comprehensive care across multiple specialties to meet your unique health and movement needs</p>
+                    <div class="hero-cta" style="margin-top: 30px;">
+                        <a href="/appointments.html" class="btn btn-primary">Book Appointment</a>
+                        <a href="#services-overview" class="btn btn-secondary">Explore Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Overview -->
+        <section class="section" id="services-overview">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Specialized Care Areas</h2>
+                    <p>Expert treatment across diverse physiotherapy specialties with personalized care plans</p>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- Sports & Running Rehab - Enhanced -->
+                    <div class="service-card" id="sports-rehab">
+                        <div class="service-header">
+                            <div class="service-info">
+                                <div class="service-icon"><i class="fas fa-running"></i></div>
+                                <h3>Sports & Running Rehabilitation</h3>
+                                <p>Specialized care for athletes and active individuals to optimize performance and prevent injury recurrence</p>
+                            </div>
+                            <span class="expand-arrow">▼</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-details">
+                                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Sports rehabilitation and running analysis" class="service-image" loading="lazy" width="800" height="150">
+                                
+                                <h4>Common Conditions Treated:</h4>
+                                <ul>
+                                    <li><strong>Running Injuries:</strong> IT band syndrome, runner's knee, shin splints, plantar fasciitis</li>
+                                    <li><strong>Sports-Specific Injuries:</strong> Ankle sprains, muscle strains, ligament injuries</li>
+                                    <li><strong>Overuse Injuries:</strong> Tendinopathies, stress fractures, repetitive strain</li>
+                                    <li><strong>Acute Sports Trauma:</strong> Impact injuries, joint dislocations</li>
+                                    <li><strong>Post-Competition Recovery:</strong> Fatigue management, performance optimization</li>
+                                </ul>
+                                
+                                <h4>Treatment Approaches:</h4>
+                                <ul>
+                                    <li><strong>Biomechanical Analysis:</strong> Gait assessment, movement pattern correction</li>
+                                    <li><strong>Manual Therapy:</strong> Joint mobilization, soft tissue techniques</li>
+                                    <li><strong>Exercise Prescription:</strong> Progressive strengthening, functional training</li>
+                                    <li><strong>Performance Enhancement:</strong> Plyometric training, sport-specific conditioning</li>
+                                    <li><strong>Injury Prevention:</strong> Pre-season screening, education programs</li>
+                                </ul>
+                                
+                                <h4>Expected Outcomes:</h4>
+                                <ul>
+                                    <li>Faster return to sport and activity</li>
+                                    <li>Improved biomechanics and movement efficiency</li>
+                                    <li>Enhanced athletic performance</li>
+                                    <li>Reduced risk of future injury</li>
+                                    <li>Better understanding of injury prevention strategies</li>
+                                </ul>
+                                
+                                <div style="margin-top: 20px; text-align: center;">
+                                    <a href="/conditions/sports-injuries.html" class="btn btn-outline">Learn More About Sports Injuries</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Musculoskeletal & Orthopaedic - Enhanced -->
+                    <div class="service-card" id="musculoskeletal">
+                        <div class="service-header">
+                            <div class="service-info">
+                                <div class="service-icon"><i class="fas fa-bone"></i></div>
+                                <h3>Musculoskeletal & Orthopaedic</h3>
+                                <p>Comprehensive treatment for joint, muscle, and bone conditions using evidence-based approaches</p>
+                            </div>
+                            <span class="expand-arrow">▼</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-details">
+                                <img src="https://images.unsplash.com/photo-1559757175-0eb30cd84c52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Musculoskeletal assessment and treatment" class="service-image" loading="lazy" width="800" height="150">
+                                
+                                <h4>Conditions We Specialize In:</h4>
+                                <ul>
+                                    <li><strong>Spinal Conditions:</strong> Lower back pain, upper back pain, disc problems, sciatica</li>
+                                    <li><strong>Neck & Shoulder:</strong> Neck pain, shoulder impingement, frozen shoulder, whiplash</li>
+                                    <li><strong>Hip & Knee:</strong> Hip arthritis, knee osteoarthritis, patellofemoral pain</li>
+                                    <li><strong>Post-Surgical Rehabilitation:</strong> Joint replacements, ligament repairs, fracture recovery</li>
+                                    <li><strong>Chronic Pain Conditions:</strong> Fibromyalgia, chronic regional pain syndrome</li>
+                                </ul>
+                                
+                                <h4>Treatment Techniques:</h4>
+                                <ul>
+                                    <li><strong>Manual Therapy:</strong> Joint mobilization, soft tissue massage, trigger point release</li>
+                                    <li><strong>Exercise Therapy:</strong> Strengthening, stretching, functional movement training</li>
+                                    <li><strong>Pain Management:</strong> Education, pacing strategies, activity modification</li>
+                                    <li><strong>Postural Correction:</strong> Workplace ergonomics, movement re-education</li>
+                                    <li><strong>Modality Application:</strong> Heat, cold, electrotherapy when appropriate</li>
+                                </ul>
+                                
+                                <h4>Treatment Goals:</h4>
+                                <ul>
+                                    <li>Significant pain reduction</li>
+                                    <li>Improved joint mobility and flexibility</li>
+                                    <li>Enhanced functional capacity</li>
+                                    <li>Better posture and movement patterns</li>
+                                    <li>Prevention of symptom recurrence</li>
+                                </ul>
+                                
+                                <div style="margin-top: 20px; text-align: center;">
+                                    <a href="/conditions/back-pain.html" class="btn btn-outline">Learn More About Back Pain</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Neurological Rehab - Enhanced -->
+                    <div class="service-card" id="neurological">
+                        <div class="service-header">
+                            <div class="service-info">
+                                <div class="service-icon"><i class="fas fa-brain"></i></div>
+                                <h3>Neurological Rehabilitation & TMJ</h3>
+                                <p>Specialized care for neurological conditions, balance disorders, headaches, and jaw dysfunction</p>
+                            </div>
+                            <span class="expand-arrow">▼</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-details">
+                                <img src="https://images.unsplash.com/photo-1559757175-0eb30cd84c52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Neurological rehabilitation and balance training" class="service-image" loading="lazy" width="800" height="150">
+                                
+                                <h4>Neurological Conditions:</h4>
+                                <ul>
+                                    <li><strong>Balance & Mobility Disorders:</strong> Fall prevention, gait abnormalities, dizziness</li>
+                                    <li><strong>Post-Stroke Recovery:</strong> Motor re-learning, functional mobility, coordination</li>
+                                    <li><strong>Vestibular Disorders:</strong> Vertigo, BPPV, balance retraining</li>
+                                    <li><strong>Movement Disorders:</strong> Parkinson's-related movement issues, tremor management</li>
+                                    <li><strong>Peripheral Neuropathy:</strong> Sensation changes, strength deficits</li>
+                                </ul>
+                                
+                                <h4>Headache & TMJ Specialization:</h4>
+                                <ul>
+                                    <li><strong>Headache Types:</strong> Tension headaches, cervicogenic headaches, migraines</li>
+                                    <li><strong>TMJ Disorders:</strong> Jaw pain, clicking, grinding, limited mouth opening</li>
+                                    <li><strong>Facial Pain:</strong> Trigeminal neuralgia, facial muscle tension</li>
+                                    <li><strong>Associated Symptoms:</strong> Neck pain, ear symptoms, jaw fatigue</li>
+                                </ul>
+                                
+                                <h4>Specialized Treatment Methods:</h4>
+                                <ul>
+                                    <li><strong>Balance Training:</strong> Stability exercises, fall prevention programs</li>
+                                    <li><strong>Gait Re-education:</strong> Walking pattern improvement, mobility aids</li>
+                                    <li><strong>Manual Therapy:</strong> Craniosacral therapy, TMJ mobilization techniques</li>
+                                    <li><strong>Cognitive-Motor Integration:</strong> Dual-task training, attention exercises</li>
+                                    <li><strong>Vestibular Rehabilitation:</strong> Habituation exercises, gaze stabilization</li>
+                                </ul>
+                                
+                                <div style="margin-top: 20px; text-align: center;">
+                                    <a href="/conditions/headaches-tmj.html" class="btn btn-outline">Learn More About Headaches & TMJ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chest Physiotherapy - Enhanced -->
+                    <div class="service-card" id="chest-physio">
+                        <div class="service-header">
+                            <div class="service-info">
+                                <div class="service-icon"><i class="fas fa-lungs"></i></div>
+                                <h3>Chest Physiotherapy</h3>
+                                <p>Specialized respiratory care for adults and children with breathing difficulties and chest conditions</p>
+                            </div>
+                            <span class="expand-arrow">▼</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-details">
+                                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Chest physiotherapy and respiratory care" class="service-image" loading="lazy" width="800" height="150">
+                                
+                                <h4>Adult Respiratory Conditions:</h4>
+                                <ul>
+                                    <li><strong>COPD Management:</strong> Chronic bronchitis, emphysema, breathlessness control</li>
+                                    <li><strong>Post-Operative Care:</strong> Chest surgery recovery, pneumonia prevention</li>
+                                    <li><strong>Acute Respiratory Issues:</strong> Chest infections, pneumonia rehabilitation</li>
+                                    <li><strong>Breathing Pattern Disorders:</strong> Hyperventilation, dysfunctional breathing</li>
+                                    <li><strong>Asthma Support:</strong> Breathing technique optimization, exercise tolerance</li>
+                                </ul>
+                                
+                                <h4>Paediatric Chest Care:</h4>
+                                <ul>
+                                    <li><strong>Childhood Respiratory Conditions:</strong> Recurrent chest infections, bronchiolitis</li>
+                                    <li><strong>Cystic Fibrosis Support:</strong> Airway clearance, exercise programs</li>
+                                    <li><strong>Developmental Issues:</strong> Breathing development support, chest wall abnormalities</li>
+                                    <li><strong>Post-Surgical Care:</strong> Recovery from chest or heart surgery</li>
+                                </ul>
+                                
+                                <h4>Treatment Techniques:</h4>
+                                <ul>
+                                    <li><strong>Airway Clearance:</strong> Percussion, vibration, postural drainage techniques</li>
+                                    <li><strong>Breathing Exercises:</strong> Diaphragmatic breathing, pursed lip breathing</li>
+                                    <li><strong>Exercise Programs:</strong> Pulmonary rehabilitation, endurance training</li>
+                                    <li><strong>Education & Support:</strong> Disease management, lifestyle modifications</li>
+                                    <li><strong>Family Training:</strong> Teaching caregivers effective techniques</li>
+                                </ul>
+                                
+                                <h4>Expected Benefits:</h4>
+                                <ul>
+                                    <li>Improved breathing efficiency</li>
+                                    <li>Enhanced exercise tolerance</li>
+                                    <li>Reduced hospital admissions</li>
+                                    <li>Better quality of life</li>
+                                    <li>Effective symptom management</li>
+                                </ul>
+                                
+                                <div style="margin-top: 20px; text-align: center;">
+                                    <a href="/conditions/copd-bronchitis.html" class="btn btn-outline">Learn More About COPD & Respiratory Care</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Corporate Wellness - Enhanced -->
+                    <div class="service-card" id="corporate">
+                        <div class="service-header">
+                            <div class="service-info">
+                                <div class="service-icon"><i class="fas fa-building"></i></div>
+                                <h3>Corporate Wellness Programs</h3>
+                                <p>Comprehensive workplace health initiatives to improve employee wellbeing and reduce injury risk</p>
+                            </div>
+                            <span class="expand-arrow">▼</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-details">
+                                <img src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Corporate wellness program and workplace ergonomics" class="service-image" loading="lazy" width="800" height="150">
+                                
+                                <h4>Workplace Assessment Services:</h4>
+                                <ul>
+                                    <li><strong>Ergonomic Evaluations:</strong> Workstation setup, equipment recommendations</li>
+                                    <li><strong>Risk Assessments:</strong> Identifying injury hazards, preventive measures</li>
+                                    <li><strong>Job Analysis:</strong> Physical demands assessment, task modification</li>
+                                    <li><strong>Environmental Factors:</strong> Lighting, seating, monitor positioning</li>
+                                </ul>
+                                
+                                <h4>Employee Health Programs:</h4>
+                                <ul>
+                                    <li><strong>Injury Prevention Workshops:</strong> Back care, posture awareness, lifting techniques</li>
+                                    <li><strong>Movement & Exercise Classes:</strong> Workplace stretching, strength programs</li>
+                                    <li><strong>Stress Management:</strong> Relaxation techniques, mindfulness sessions</li>
+                                    <li><strong>Health Screenings:</strong> Postural assessments, movement evaluations</li>
+                                </ul>
+                                
+                                <h4>Return-to-Work Services:</h4>
+                                <ul>
+                                    <li><strong>Functional Capacity Evaluations:</strong> Work readiness assessments</li>
+                                    <li><strong>Graduated Return Programs:</strong> Phased return-to-work planning</li>
+                                    <li><strong>Workplace Modifications:</strong> Temporary adjustments, equipment provision</li>
+                                    <li><strong>Ongoing Support:</strong> Follow-up assessments, progress monitoring</li>
+                                </ul>
+                                
+                                <h4>Program Benefits:</h4>
+                                <ul>
+                                    <li>Reduced workplace injury rates</li>
+                                    <li>Decreased absenteeism and workers' compensation claims</li>
+                                    <li>Improved employee satisfaction and productivity</li>
+                                    <li>Enhanced workplace culture and morale</li>
+                                    <li>Cost savings through injury prevention</li>
+                                </ul>
+                                
+                                <div style="margin-top: 20px; text-align: center;">
+                                    <a href="/contact.html" class="btn btn-outline">Discuss Corporate Solutions</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Home Visit Services - Enhanced -->
+                    <div class="service-card" id="home-visits">
+                        <div class="service-header">
+                            <div class="service-info">
+                                <div class="service-icon"><i class="fas fa-home"></i></div>
+                                <h3>Home Visit Services</h3>
+                                <p>Professional physiotherapy treatment delivered in the comfort and convenience of your own home</p>
+                            </div>
+                            <span class="expand-arrow">▼</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-details">
+                                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Home visit physiotherapy service" class="service-image" loading="lazy" width="800" height="150">
+                                
+                                <h4>Service Coverage Areas:</h4>
+                                <ul>
+                                    <li><strong>Primary Areas:</strong> Pretoria East, Pretoria Central, Pretoria North</li>
+                                    <li><strong>Extended Areas:</strong> Midrand, Centurion, Sandton (select areas)</li>
+                                    <li><strong>Special Arrangements:</strong> Other areas considered based on circumstances</li>
+                                    <li><strong>Travel Time:</strong> Efficient scheduling to minimize costs</li>
+                                </ul>
+                                
+                                <h4>Ideal Candidates for Home Visits:</h4>
+                                <ul>
+                                    <li><strong>Mobility Limitations:</strong> Difficulty traveling due to pain or disability</li>
+                                    <li><strong>Post-Surgical Patients:</strong> Recent surgery, recovery limitations</li>
+                                    <li><strong>Elderly Individuals:</strong> Preference for familiar environment</li>
+                                    <li><strong>Busy Professionals:</strong> Time constraints, scheduling flexibility needs</li>
+                                    <li><strong>Parents with Young Children:</strong> Childcare considerations</li>
+                                </ul>
+                                
+                                <h4>Home Visit Advantages:</h4>
+                                <ul>
+                                    <li><strong>Convenience:</strong> No travel required, familiar environment</li>
+                                    <li><strong>Personalized Attention:</strong> One-on-one care, customized treatment</li>
+                                    <li><strong>Family Involvement:</strong> Education for family members, caregiver training</li>
+                                    <li><strong>Real-World Assessment:</strong> Evaluation in actual living environment</li>
+                                    <li><strong>Flexible Scheduling:</strong> Early morning, evening appointments available</li>
+                                </ul>
+                                
+                                <h4>What to Expect:</h4>
+                                <ul>
+                                    <li><strong>Initial Assessment:</strong> Comprehensive evaluation in your home</li>
+                                    <li><strong>Treatment Planning:</strong> Customized program based on your space and needs</li>
+                                    <li><strong>Equipment Provision:</strong> Portable equipment brought as needed</li>
+                                    <li><strong>Progress Monitoring:</strong> Regular reassessment and plan adjustment</li>
+                                    <li><strong>Education & Training:</strong> Self-management techniques, family education</li>
+                                </ul>
+                                
+                                <div style="margin-top: 20px; text-align: center;">
+                                    <a href="/contact.html" class="btn btn-outline">Book Home Visit Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Treatment Process Section -->
+        <section class="section" style="background: var(--light-color);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Treatment Process</h2>
+                    <p>A systematic approach to ensure optimal outcomes for every patient</p>
+                </div>
+                
+                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                    <div class="service-card">
+                        <div class="service-header" style="cursor: default;">
+                            <div class="service-info">
+                                <div class="service-icon" style="background: #e74c3c;">1</div>
+                                <h3>Initial Consultation</h3>
+                                <p>Comprehensive assessment including medical history, physical examination, and goal setting to understand your unique situation and needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-header" style="cursor: default;">
+                            <div class="service-info">
+                                <div class="service-icon" style="background: #f39c12;">2</div>
+                                <h3>Diagnosis & Planning</h3>
+                                <p>Analysis of assessment findings to identify the root cause of your condition and develop a personalized, evidence-based treatment plan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-header" style="cursor: default;">
+                            <div class="service-info">
+                                <div class="service-icon" style="background: var(--secondary-color);">3</div>
+                                <h3>Active Treatment</h3>
+                                <p>Implementation of your treatment plan using appropriate manual therapy techniques, exercises, and patient education strategies.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-header" style="cursor: default;">
+                            <div class="service-info">
+                                <div class="service-icon" style="background: var(--primary-color);">4</div>
+                                <h3>Progress Monitoring</h3>
+                                <p>Regular reassessment and treatment plan adjustments to ensure you're progressing toward your goals effectively and efficiently.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-header" style="cursor: default;">
+                            <div class="service-info">
+                                <div class="service-icon" style="background: #9b59b6;">5</div>
+                                <h3>Maintenance & Prevention</h3>
+                                <p>Transition to self-management with ongoing support, maintenance programs, and strategies to prevent future problems.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pricing Information -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Investment in Your Health</h2>
+                    <p>Transparent pricing for professional physiotherapy services</p>
+                </div>
+                
+                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="service-card">
+                        <div class="service-header" style="cursor: default;">
+                            <div class="service-info">
+                                <div class="service-icon"><i class="fas fa-hospital"></i></div>
+                                <h3>Clinic Consultations</h3>
+                                <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                                    <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color);">Initial Assessment (60 mins): Contact for pricing</li>
+                                    <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color);">Follow-up Treatment (45 mins): Contact for pricing</li>
+                                    <li style="padding: 8px 0;">Package Deals Available</li>
+                                </ul>
+                                <p style="font-size: 14px; margin-top: 15px; color: #666;">Medical aid billing available for most schemes</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-header" style="cursor: default;">
+                            <div class="service-info">
+                                <div class="service-icon"><i class="fas fa-home-heart"></i></div>
+                                <h3>Home Visit Services</h3>
+                                <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                                    <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color);">Initial Home Assessment: Contact for pricing</li>
+                                    <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color);">Follow-up Home Treatment: Contact for pricing</li>
+                                    <li style="padding: 8px 0;">Travel costs included within service areas</li>
+                                </ul>
+                                <p style="font-size: 14px; margin-top: 15px; color: #666;">Convenient scheduling including evenings and weekends</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-header" style="cursor: default;">
+                            <div class="service-info">
+                                <div class="service-icon"><i class="fas fa-building-user"></i></div>
+                                <h3>Corporate Programs</h3>
+                                <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                                    <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color);">Workplace Assessments: Custom pricing</li>
+                                    <li style="padding: 8px 0; border-bottom: 1px solid var(--border-color);">Group Workshops: Contact for rates</li>
+                                    <li style="padding: 8px 0;">Ongoing Programs: Tailored packages</li>
+                                </ul>
+                                <p style="font-size: 14px; margin-top: 15px; color: #666;">Volume discounts available for large organizations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px; padding: 30px; background: var(--light-color); border-radius: var(--border-radius);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 15px;">Payment Options</h3>
+                    <p style="margin-bottom: 20px;">We accept cash, EFT, and medical aid billing for most schemes. Payment plans available for extended treatment programs.</p>
+                    <p><strong>For detailed pricing information:</strong></p>
+                    <div class="hero-cta" style="margin-top: 20px;">
+                        <a href="tel:+27646533690" class="btn btn-primary">Call for Pricing</a>
+                        <a href="/contact.html" class="btn btn-outline">Email Inquiry</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action -->
+        <section class="section" style="background: var(--primary-color); color: white;">
+            <div class="container">
+                <div class="section-title">
+                    <h2 style="color: white;">Ready to Start Your Recovery Journey?</h2>
+                    <p style="color: rgba(255,255,255,0.9);">Choose the service that best meets your needs and take the first step toward better health</p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <div class="hero-cta">
+                        <a href="/appointments.html" class="btn btn-secondary" style="background: var(--secondary-color); color: var(--dark-color);">Book Online</a>
+                        <a href="/contact.html" class="btn" style="background: transparent; color: white; border: 2px solid white;">Contact Us</a>
+                        <a href="/faq.html" class="btn" style="background: transparent; color: white; border: 2px solid white;">View FAQ</a>
+                    </div>
+                    
+                    <div style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.1); border-radius: var(--border-radius);">
+                        <h3 style="margin-bottom: 15px;">Not Sure Which Service You Need?</h3>
+                        <p style="margin-bottom: 20px;">Contact us for a free consultation to discuss your condition and determine the best treatment approach for your specific needs.</p>
+                        <p><strong>Call:</strong> <a href="tel:+27646533690" style="color: var(--secondary-color);">+27 (0) 64 653 3690</a> | <strong>Email:</strong> <a href="mailto:info@rmphysiotherapy.com" style="color: var(--secondary-color);">info@rmphysiotherapy.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="/" class="logo" style="color: white; margin-bottom: 20px; display: inline-flex;">
+                        <img src="images/Logo.png" alt="RM Physiotherapy Logo">
+                    </a>
+                    <p>Expert physiotherapy care in Pretoria East. HPCSA registered physiotherapist Temošo Nkadimeng provides professional treatment for movement and well-being.</p>
+                    <p><strong>Practice No:</strong> 1225081<br>
+                    <strong>HPCSA No:</strong> PT 015 3109</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                        <li><a href="/blog/">Blog</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/privacypolicy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="/services.html#sports-rehab">Sports & Running Rehab</a></li>
+                        <li><a href="/services.html#musculoskeletal">Musculoskeletal & Orthopaedic</a></li>
+                        <li><a href="/services.html#neurological">Neurological Rehab</a></li>
+                        <li><a href="/services.html#chest-physio">Chest Physiotherapy</a></li>
+                        <li><a href="/services.html#corporate">Corporate Wellness</a></li>
+                        <li><a href="/services.html#home-visits">Home Visit Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><strong>Phone:</strong> <a href="tel:+27646533690">+27 (0) 64 653 3690</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@rmphysiotherapy.com">info@rmphysiotherapy.com</a></p>
+                    <p><strong>Location:</strong> Pretoria East, Gauteng</p>
+                    <p><strong>Hours:</strong> Mon-Fri, 7:00 AM - 5:00 PM</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/RMPhysiotherapyZA" class="social-icon" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/rmphysiotherapyza" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@rm.physiotherapy" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 RM Physiotherapy. All rights reserved. | Developed with care for your health and privacy.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <p>We use cookies to improve your experience on our site and to show you relevant advertising. We also use third-party services like Google Maps and Teamup Calendar. By clicking "Accept", you consent to our use of cookies. <a href="/privacypolicy.html">Learn more</a></p>
+            </div>
+            <div class="cookie-actions">
+                <button class="cookie-decline">Decline</button>
+                <button class="cookie-accept">Accept</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Back to top" style="position:fixed;bottom:20px;right:20px;width:50px;height:50px;background:var(--primary-color);color:white;border:none;border-radius:50%;cursor:pointer;z-index:1000;opacity:0;visibility:hidden;transition:var(--transition);">↑</button>
+    
+    <!-- Scripts -->
+    <script src="/js/script.js" defer></script>
+</body>
+</html>
