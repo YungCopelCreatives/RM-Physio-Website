@@ -92,3 +92,50 @@
 ::1 - - [06/Sep/2025 18:59:01] "GET /css/style.css HTTP/1.1" 304 -
 ::1 - - [06/Sep/2025 18:59:04] code 404, message File not found
 ::1 - - [06/Sep/2025 18:59:04] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [06/Sep/2025 19:02:13] "GET /about.html HTTP/1.1" 200 -
+::1 - - [06/Sep/2025 19:02:13] "GET /css/style.css HTTP/1.1" 304 -
+::1 - - [06/Sep/2025 19:02:14] code 404, message File not found
+::1 - - [06/Sep/2025 19:02:14] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [06/Sep/2025 19:02:16] "GET /index.html HTTP/1.1" 304 -
+::1 - - [06/Sep/2025 19:02:16] code 404, message File not found
+::1 - - [06/Sep/2025 19:02:16] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [06/Sep/2025 19:02:50] "GET /conditions/ HTTP/1.1" 200 -
+::1 - - [06/Sep/2025 19:02:50] "GET /css/style.css HTTP/1.1" 304 -
+::1 - - [06/Sep/2025 19:02:50] code 404, message File not found
+::1 - - [06/Sep/2025 19:02:50] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [06/Sep/2025 19:02:59] "GET /blog/ HTTP/1.1" 200 -
+::1 - - [06/Sep/2025 19:03:00] code 404, message File not found
+::1 - - [06/Sep/2025 19:03:00] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [06/Sep/2025 19:03:18] "GET /faq.html HTTP/1.1" 200 -
+::1 - - [06/Sep/2025 19:03:18] code 404, message File not found
+::1 - - [06/Sep/2025 19:03:18] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [06/Sep/2025 19:03:29] "GET /privacypolicy.html HTTP/1.1" 200 -
+::1 - - [06/Sep/2025 19:03:29] "GET /css/style.css HTTP/1.1" 304 -
+::1 - - [06/Sep/2025 19:03:29] code 404, message File not found
+::1 - - [06/Sep/2025 19:03:29] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [06/Sep/2025 19:03:42] "GET /contact.html HTTP/1.1" 200 -
+::1 - - [06/Sep/2025 19:03:43] code 404, message File not found
+::1 - - [06/Sep/2025 19:03:43] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [06/Sep/2025 19:03:46] "GET /index.html HTTP/1.1" 304 -
+::1 - - [06/Sep/2025 19:03:46] code 404, message File not found
+::1 - - [06/Sep/2025 19:03:46] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [06/Sep/2025 19:08:26] "GET /css/style.css HTTP/1.1" 304 -
+::1 - - [06/Sep/2025 19:08:26] code 404, message File not found
+::1 - - [06/Sep/2025 19:08:26] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [06/Sep/2025 19:08:35] "GET /conditions/neck-pain.html HTTP/1.1" 200 -
+::1 - - [06/Sep/2025 19:08:35] code 404, message File not found
+::1 - - [06/Sep/2025 19:08:35] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [07/Sep/2025 13:23:27] "GET / HTTP/1.1" 304 -
+::1 - - [07/Sep/2025 13:23:28] "GET /images/Logo.png HTTP/1.1" 200 -
+::1 - - [07/Sep/2025 13:23:28] "GET /css/style.css HTTP/1.1" 304 -
+::1 - - [07/Sep/2025 13:23:28] "GET /js/script.js HTTP/1.1" 200 -
+::1 - - [07/Sep/2025 13:23:32] code 404, message File not found
+::1 - - [07/Sep/2025 13:23:32] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [07/Sep/2025 13:23:34] "GET /manifest.webmanifest HTTP/1.1" 304 -
+::1 - - [07/Sep/2025 13:23:34] "GET /apple-touch-icon.png HTTP/1.1" 304 -
+::1 - - [07/Sep/2025 13:26:41] "GET /appointments.html HTTP/1.1" 304 -
+::1 - - [07/Sep/2025 13:26:48] code 404, message File not found
+::1 - - [07/Sep/2025 13:26:48] "GET /sw.js HTTP/1.1" 404 -
+::1 - - [07/Sep/2025 13:27:03] "GET /index.html HTTP/1.1" 304 -
+::1 - - [07/Sep/2025 13:27:03] code 404, message File not found
+::1 - - [07/Sep/2025 13:27:03] "GET /sw.js HTTP/1.1" 404 -
