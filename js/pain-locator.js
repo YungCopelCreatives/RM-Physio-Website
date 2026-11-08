@@ -1,4 +1,4 @@
-// 3D pain locator: a simple rotatable body the patient taps to show where it hurts.
+// 3D pain locator: a rotatable muscle-style body the patient taps to show where it hurts.
 // Fires a "painselect" event on the container with { region, label, options }.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -8,7 +8,6 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 const BODY_HEIGHT = 1.72;
 
 const BLUE = 0x155f82;
-const BODY = 0xe9f1f5;
 const PAIN = 0xe53935;
 
 // Region labels and the condition options (from the booking dropdown) each one suggests
@@ -73,42 +72,114 @@ function fitModel(model) {
     model.position.y -= box.min.y;
 }
 
-function buildBody(material) {
+// Muscle-fibre texture: fine vertical streaks so limbs read as muscle rather than plastic
+function fibreTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 256;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#d27c6d';
+    ctx.fillRect(0, 0, 256, 256);
+    for (let x = 0; x < 256; x += 2) {
+        const shade = Math.random();
+        ctx.fillStyle = shade > 0.5 ? `rgba(255, 214, 200, ${0.08 + shade * 0.12})` : `rgba(120, 40, 35, ${0.06 + shade * 0.1})`;
+        ctx.fillRect(x, 0, 1 + Math.round(shade), 256);
+    }
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(3, 1);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    return texture;
+}
+
+function buildBody() {
+    const muscle = new THREE.MeshPhysicalMaterial({ map: fibreTexture(), roughness: 0.55, sheen: 0.4, sheenColor: 0xffd2c4, clearcoat: 0.15 });
+    const tendon = new THREE.MeshPhysicalMaterial({ color: 0xf2ebe4, roughness: 0.45, clearcoat: 0.3 });
     const body = new THREE.Group();
-    const add = (part, geometry, x, y, z = 0, rotZ = 0) => {
+
+    const add = (part, geometry, material, x, y, z = 0, scale = [1, 1, 1], rotZ = 0) => {
         const mesh = new THREE.Mesh(geometry, material);
         mesh.position.set(x, y, z);
+        mesh.scale.set(...scale);
         mesh.rotation.z = rotZ;
         mesh.userData.part = part;
+        mesh.userData.base = material;
         body.add(mesh);
         return mesh;
     };
-    const capsule = (r, len) => new THREE.CapsuleGeometry(r, len, 8, 16);
-    const sphere = (r) => new THREE.SphereGeometry(r, 24, 16);
+    const sphere = (r) => new THREE.SphereGeometry(r, 32, 20);
+    // Lathe a limb or torso from a [radius, height] profile, base at y = 0
+    const lathe = (profile) => new THREE.LatheGeometry(profile.map(([r, h]) => new THREE.Vector2(r, h)), 32);
 
-    const head = add('head', sphere(0.12), 0, 1.62);
-    head.scale.set(0.9, 1.08, 1);
-    add('neck', new THREE.CylinderGeometry(0.05, 0.06, 0.1, 16), 0, 1.47);
+    // Head, neck and trapezius
+    add('head', sphere(0.1), muscle, 0, 1.615, 0.005, [0.84, 1.02, 0.95]);
+    add('head', sphere(0.06), muscle, 0, 1.555, 0.03, [1.05, 0.7, 0.9]);
+    add('neck', lathe([[0.058, 0], [0.047, 0.06], [0.048, 0.13]]), muscle, 0, 1.42);
+    for (const side of [-1, 1]) {
+        add('neck', sphere(0.06), muscle, side * 0.085, 1.43, -0.02, [1.7, 0.5, 0.75], side * -0.38);
+    }
 
-    const upper = add('torsoUpper', capsule(0.16, 0.16), 0, 1.25);
-    upper.scale.set(1.2, 1, 0.68);
-    const lower = add('torsoLower', capsule(0.14, 0.1), 0, 1.02);
-    lower.scale.set(1.08, 1, 0.66);
-    const pelvis = add('hip', sphere(0.17), 0, 0.88);
-    pelvis.scale.set(1.05, 0.7, 0.7);
+    // Rib cage, chest muscles and abdomen
+    add('torsoUpper', lathe([[0.125, 0], [0.135, 0.08], [0.15, 0.2], [0.155, 0.3], [0.13, 0.38], [0.06, 0.43]]), muscle, 0, 1.0, 0, [1.35, 1, 0.76]);
+    for (const side of [-1, 1]) {
+        add('torsoUpper', sphere(0.075), muscle, side * 0.07, 1.31, 0.085, [1.15, 0.72, 0.45]);
+    }
+    add('torsoLower', lathe([[0.135, 0], [0.122, 0.08], [0.128, 0.17]]), muscle, 0, 0.86, 0, [1.25, 1, 0.8]);
+    add('torsoLower', new THREE.BoxGeometry(0.008, 0.3, 0.01), tendon, 0, 1.1, 0.112);
+    for (const side of [-1, 1]) {
+        // Lats and the spinal muscles either side of the spine
+        add('torsoUpper', sphere(0.07), muscle, side * 0.1, 1.2, -0.07, [1, 1.8, 0.45]);
+        add('torsoLower', sphere(0.045), muscle, side * 0.035, 1.03, -0.085, [0.55, 2.6, 0.4]);
+    }
+    add('torsoLower', sphere(0.06), tendon, 0, 0.97, -0.088, [1.3, 0.8, 0.22]);
+
+    // Pelvis and glutes
+    add('hip', sphere(0.16), muscle, 0, 0.88, -0.01, [1.02, 0.55, 0.62]);
+    for (const side of [-1, 1]) {
+        add('hip', sphere(0.085), muscle, side * 0.066, 0.82, -0.07, [1, 1, 0.8]);
+    }
 
     for (const side of [-1, 1]) {
-        add('shoulder', sphere(0.075), side * 0.23, 1.38);
-        add('arm', capsule(0.045, 0.22), side * 0.27, 1.19, 0, side * 0.12);
-        add('arm', capsule(0.04, 0.22), side * 0.31, 0.92, 0, side * 0.05);
-        add('arm', sphere(0.045), side * 0.325, 0.76);
+        // Arm: deltoid, upper arm, elbow, forearm, wrist, hand
+        add('shoulder', sphere(0.068), muscle, side * 0.215, 1.37, 0, [1, 1.15, 1]);
+        add('arm', lathe([[0.035, 0], [0.042, 0.1], [0.047, 0.18], [0.04, 0.27]]), muscle, side * 0.262, 1.08, 0, [1, 1, 1], side * 0.17);
+        add('arm', sphere(0.034), tendon, side * 0.262, 1.075);
+        add('arm', lathe([[0.025, 0], [0.03, 0.06], [0.04, 0.18], [0.035, 0.26]]), muscle, side * 0.3, 0.8, 0, [1, 1, 1], side * 0.15);
+        add('arm', sphere(0.024), tendon, side * 0.3, 0.795);
+        add('arm', sphere(0.04), tendon, side * 0.305, 0.725, 0, [0.6, 1.45, 0.32]);
 
-        add('thigh', capsule(0.07, 0.28), side * 0.1, 0.62);
-        add('knee', sphere(0.062), side * 0.1, 0.43);
-        add('lowerLeg', capsule(0.052, 0.28), side * 0.1, 0.24);
-        add('foot', new THREE.BoxGeometry(0.08, 0.05, 0.2), side * 0.1, 0.04, 0.04);
+        // Leg: thigh, knee, lower leg, ankle, foot
+        add('thigh', lathe([[0.055, 0], [0.06, 0.08], [0.075, 0.25], [0.085, 0.37], [0.08, 0.42]]), muscle, side * 0.09, 0.47);
+        add('thigh', sphere(0.06), muscle, side * 0.09, 0.68, 0.03, [0.85, 2.2, 0.6]);
+        add('knee', sphere(0.05), tendon, side * 0.09, 0.46, 0.005, [1, 1.1, 0.9]);
+        add('knee', sphere(0.032), tendon, side * 0.09, 0.465, 0.045, [1, 1.15, 0.6]);
+        add('lowerLeg', lathe([[0.03, 0], [0.035, 0.05], [0.05, 0.2], [0.055, 0.28], [0.045, 0.38]]), muscle, side * 0.09, 0.07);
+        add('lowerLeg', sphere(0.045), muscle, side * 0.09, 0.31, -0.022, [1, 2.1, 0.9]);
+        add('lowerLeg', sphere(0.03), tendon, side * 0.09, 0.07);
+        add('foot', sphere(0.05), tendon, side * 0.09, 0.035, 0.045, [0.85, 0.45, 2.1]);
     }
     return body;
+}
+
+// A camera-facing glowing dot so the pain marker stays visible on the red muscle
+function markerTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 128;
+    const ctx = canvas.getContext('2d');
+    const glow = ctx.createRadialGradient(64, 64, 10, 64, 64, 64);
+    glow.addColorStop(0, 'rgba(255, 40, 40, 0.9)');
+    glow.addColorStop(1, 'rgba(255, 40, 40, 0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, 128, 128);
+    ctx.beginPath();
+    ctx.arc(64, 64, 18, 0, Math.PI * 2);
+    ctx.fillStyle = '#e53935';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = '#ffffff';
+    ctx.stroke();
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    return texture;
 }
 
 export function createPainLocator(container, modelUrl) {
@@ -130,8 +201,7 @@ export function createPainLocator(container, modelUrl) {
     key.position.set(1.5, 2.5, 2);
     scene.add(key);
 
-    const material = new THREE.MeshStandardMaterial({ color: BODY, roughness: 0.65, metalness: 0 });
-    let body = buildBody(material);
+    let body = buildBody();
     let zoned = false;
     scene.add(body);
 
@@ -173,20 +243,15 @@ export function createPainLocator(container, modelUrl) {
     controls.maxPolarAngle = Math.PI - 0.35;
     controls.update();
 
-    // Glowing pain marker: a solid dot plus a pulsing halo
-    const marker = new THREE.Group();
-    marker.add(new THREE.Mesh(new THREE.SphereGeometry(0.022, 16, 12), new THREE.MeshBasicMaterial({ color: PAIN })));
-    const halo = new THREE.Mesh(
-        new THREE.SphereGeometry(0.05, 20, 14),
-        new THREE.MeshBasicMaterial({ color: PAIN, transparent: true, opacity: 0.35, depthWrite: false })
-    );
-    marker.add(halo);
+    // Glowing pain marker, always drawn on top so it reads against the muscle colour
+    const marker = new THREE.Sprite(new THREE.SpriteMaterial({ map: markerTexture(), depthTest: false, transparent: true }));
+    marker.renderOrder = 10;
+    marker.scale.setScalar(0.09);
     marker.visible = false;
     scene.add(marker);
 
     let highlighted = null;
-    const highlightMaterial = material.clone();
-    highlightMaterial.color.set(0xf7d4d2);
+    const highlightMaterial = new THREE.MeshPhysicalMaterial({ color: 0xff8a80, emissive: 0x7a0000, emissiveIntensity: 0.45, roughness: 0.5 });
 
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
@@ -211,7 +276,7 @@ export function createPainLocator(container, modelUrl) {
 
         marker.position.copy(hit.point);
         marker.visible = true;
-        if (highlighted) highlighted.material = material;
+        if (highlighted) highlighted.material = highlighted.userData.base;
         highlighted = null;
         if (!zoned) {
             highlighted = hit.object;
@@ -236,9 +301,7 @@ export function createPainLocator(container, modelUrl) {
     const clock = new THREE.Clock();
     renderer.setAnimationLoop(() => {
         if (marker.visible && !reduceMotion) {
-            const s = 1 + 0.35 * Math.sin(clock.getElapsedTime() * 4);
-            halo.scale.setScalar(s);
-            halo.material.opacity = 0.45 - 0.15 * s;
+            marker.scale.setScalar(0.09 * (1 + 0.18 * Math.sin(clock.getElapsedTime() * 4)));
         }
         controls.update();
         renderer.render(scene, camera);
@@ -260,7 +323,7 @@ export function createPainLocator(container, modelUrl) {
         },
         clear() {
             marker.visible = false;
-            if (highlighted) highlighted.material = material;
+            if (highlighted) highlighted.material = highlighted.userData.base;
             highlighted = null;
         },
     };
