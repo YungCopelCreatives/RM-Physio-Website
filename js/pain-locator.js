@@ -2,6 +2,10 @@
 // Fires a "painselect" event on the container with { region, label, options }.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+
+const BODY_HEIGHT = 1.72;
 
 const BLUE = 0x155f82;
 const BODY = 0xe9f1f5;
@@ -36,6 +40,37 @@ function regionFor(part, localPoint) {
         case 'foot': return localPoint.z < -0.02 ? 'heel' : 'foot';
         default: return part;
     }
+}
+
+// For a single-mesh anatomy model, work out the region from where on the body the hit landed.
+// Heights are fractions of standing height; the hit's surface normal tells front from back.
+function regionForZone(point, normal) {
+    const y = point.y / BODY_HEIGHT;
+    const x = Math.abs(point.x) / BODY_HEIGHT;
+    const back = normal.z < 0;
+    if (y > 0.87) return 'head';
+    if (y > 0.82) return x > 0.07 ? 'shoulder' : 'neck';
+    if (x > 0.15 && y > 0.4) return y > 0.76 ? 'shoulder' : 'arm';
+    if (y > 0.76 && x > 0.1) return 'shoulder';
+    if (y > 0.62) return back ? 'upperBack' : 'chest';
+    if (y > 0.53) return back ? 'lowerBack' : 'abdomen';
+    if (y > 0.46) return 'hip';
+    if (y > 0.31) return 'thigh';
+    if (y > 0.25) return 'knee';
+    if (y > 0.06) return back ? 'calf' : 'shin';
+    return back ? 'heel' : 'foot';
+}
+
+// Scale a loaded model to standing height with its feet on the floor, centred
+function fitModel(model) {
+    const box = new THREE.Box3().setFromObject(model);
+    const size = box.getSize(new THREE.Vector3());
+    model.scale.multiplyScalar(BODY_HEIGHT / size.y);
+    box.setFromObject(model);
+    const centre = box.getCenter(new THREE.Vector3());
+    model.position.x -= centre.x;
+    model.position.z -= centre.z;
+    model.position.y -= box.min.y;
 }
 
 function buildBody(material) {
@@ -76,7 +111,7 @@ function buildBody(material) {
     return body;
 }
 
-export function createPainLocator(container) {
+export function createPainLocator(container, modelUrl) {
     const width = () => container.clientWidth;
     const height = () => container.clientHeight;
 
@@ -96,8 +131,29 @@ export function createPainLocator(container) {
     scene.add(key);
 
     const material = new THREE.MeshStandardMaterial({ color: BODY, roughness: 0.65, metalness: 0 });
-    const body = buildBody(material);
+    let body = buildBody(material);
+    let zoned = false;
     scene.add(body);
+
+    // Swap in a realistic anatomy model when one is configured; keep the simple body if it fails
+    if (modelUrl) {
+        const loader = new GLTFLoader();
+        const draco = new DRACOLoader();
+        draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/draco/gltf/');
+        loader.setDRACOLoader(draco);
+        container.classList.add('loading-model');
+        loader.load(modelUrl, (gltf) => {
+            const model = gltf.scene;
+            fitModel(model);
+            const group = new THREE.Group();
+            group.add(model);
+            scene.remove(body);
+            body = group;
+            zoned = true;
+            scene.add(body);
+            container.classList.remove('loading-model');
+        }, undefined, () => container.classList.remove('loading-model'));
+    }
 
     // Subtle brand-blue floor ring
     const ring = new THREE.Mesh(
@@ -141,18 +197,26 @@ export function createPainLocator(container) {
         pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
         pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
         raycaster.setFromCamera(pointer, camera);
-        const hit = raycaster.intersectObjects(body.children, false)[0];
+        const hit = raycaster.intersectObjects(body.children, true)[0];
         if (!hit) return;
 
-        const part = hit.object.userData.part;
-        const local = hit.object.worldToLocal(hit.point.clone());
-        const region = regionFor(part, local);
+        let region;
+        if (zoned) {
+            const normal = hit.face.normal.clone().transformDirection(hit.object.matrixWorld);
+            region = regionForZone(hit.point, normal);
+        } else {
+            const local = hit.object.worldToLocal(hit.point.clone());
+            region = regionFor(hit.object.userData.part, local);
+        }
 
         marker.position.copy(hit.point);
         marker.visible = true;
         if (highlighted) highlighted.material = material;
-        highlighted = hit.object;
-        highlighted.material = highlightMaterial;
+        highlighted = null;
+        if (!zoned) {
+            highlighted = hit.object;
+            highlighted.material = highlightMaterial;
+        }
 
         container.dispatchEvent(new CustomEvent('painselect', {
             detail: { region, ...REGIONS[region] },
@@ -217,7 +281,7 @@ document.querySelectorAll('[data-pain-locator]').forEach((container) => {
         container.closest('.pain-locator')?.classList.add('no-3d');
         return;
     }
-    const locator = createPainLocator(container);
+    const locator = createPainLocator(container, container.dataset.model);
     container.closest('.pain-locator')?.classList.add('ready');
     container.closest('.pain-locator')?.querySelectorAll('[data-show-side]').forEach((button) => {
         button.addEventListener('click', () => locator.showSide(button.dataset.showSide));

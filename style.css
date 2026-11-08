@@ -2541,3 +2541,14 @@ button:focus,
 .pain-panel {
     text-align: left;
 }
+
+.pain-canvas.loading-model::after {
+    content: 'Loading model…';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #6b7f8a;
+    font-size: 13px;
+}
