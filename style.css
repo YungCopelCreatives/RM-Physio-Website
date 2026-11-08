@@ -2552,3 +2552,14 @@ button:focus,
     color: #6b7f8a;
     font-size: 13px;
 }
+
+.model-credit {
+    grid-column: 1;
+    margin-top: -18px;
+    color: #6b7f8a;
+    font-size: 12px;
+}
+
+.model-credit a {
+    color: inherit;
+}
