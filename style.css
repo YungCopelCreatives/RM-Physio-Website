@@ -771,18 +771,6 @@ body {
     padding-left: 0;
 }
 
-.form-group label::before {
-    content: '';
-    position: absolute;
-    left: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 4px;
-    background: var(--secondary-color);
-    border-radius: 50%;
-    opacity: 0.7;
-}
 
 /* Input Icons */
 .form-group--with-icon {
@@ -2201,4 +2189,377 @@ button:focus,
     .hero-content p {
         font-size: 1.05rem;
     }
+}
+
+/* ---------- Booking wizard + 3D pain locator ---------- */
+.booking-wizard {
+    --pain: #e53935;
+    background: #fff;
+    border: 1px solid #dbe7ee;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(21, 95, 130, 0.08);
+    position: relative;
+}
+
+.booking-wizard fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+.booking-wizard h3 {
+    text-align: left;
+    color: var(--primary-color);
+    margin-bottom: 18px;
+    outline: none;
+}
+
+.wizard-step.active {
+    animation: wizard-in 0.35s ease both;
+}
+
+@keyframes wizard-in {
+    from { opacity: 0; transform: translateX(16px); }
+    to { opacity: 1; transform: none; }
+}
+
+.wizard-progress {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+    counter-reset: none;
+}
+
+.wizard-progress li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #e3edf2;
+    color: #6b7f8a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.wizard-progress li span {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #e3edf2;
+    color: #6b7f8a;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.wizard-progress li.active {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.wizard-progress li.active span {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.wizard-progress li.done {
+    border-color: var(--secondary-color);
+}
+
+.wizard-progress li.done span {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.pain-locator {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.pain-stage {
+    position: relative;
+    background: radial-gradient(circle at 50% 40%, #ffffff 0%, #eef4f7 70%);
+    border: 1px solid #dbe7ee;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.pain-canvas {
+    height: 460px;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.pain-canvas canvas {
+    display: block;
+}
+
+.pain-stage-tools {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    gap: 6px;
+}
+
+.pain-stage-tools button,
+.pain-region,
+.pain-chip {
+    font: inherit;
+    font-size: 13px;
+    border: 1px solid #c9dbe5;
+    background: #fff;
+    color: var(--primary-color);
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.pain-stage-tools button:hover,
+.pain-region:hover,
+.pain-chip:hover {
+    border-color: var(--primary-color);
+}
+
+.pain-hint {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: #6b7f8a;
+    pointer-events: none;
+}
+
+/* Region buttons are the fallback when 3D isn't available */
+.pain-regions {
+    display: none;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.pain-regions p {
+    width: 100%;
+    margin: 0;
+}
+
+.pain-locator:not(.ready) .pain-regions,
+.pain-locator.no-3d .pain-regions {
+    display: flex;
+}
+
+.pain-locator.no-3d .pain-stage {
+    display: none;
+}
+
+.pain-locator.no-3d {
+    grid-template-columns: 1fr;
+}
+
+.pain-summary {
+    min-height: 1.5em;
+    margin-bottom: 10px;
+}
+
+.pain-summary strong {
+    color: var(--pain);
+}
+
+.pain-choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.pain-chip.selected {
+    background: var(--pain);
+    border-color: var(--pain);
+    color: #fff;
+}
+
+.visit-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.visit-option {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.visit-option input {
+    position: absolute;
+    opacity: 0;
+}
+
+.visit-option span {
+    display: block;
+    height: 100%;
+    border: 2px solid #dbe7ee;
+    border-radius: 12px;
+    padding: 16px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.visit-option strong,
+.visit-option small {
+    display: block;
+}
+
+.visit-option small {
+    color: #6b7f8a;
+    margin-top: 4px;
+}
+
+.visit-option input:checked + span {
+    border-color: var(--primary-color);
+    background: #f2f8fb;
+}
+
+.visit-option input:focus-visible + span {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+.booking-wizard .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 20px;
+}
+
+.wizard-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.wizard-actions .btn-primary:only-child {
+    margin-left: auto;
+}
+
+.wizard-done {
+    display: none;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.booking-wizard.sent .wizard-done {
+    display: flex;
+}
+
+.wizard-done circle {
+    fill: none;
+    stroke: var(--secondary-color);
+    stroke-width: 3;
+    stroke-dasharray: 151;
+    stroke-dashoffset: 151;
+    animation: wizard-draw 0.6s ease forwards;
+}
+
+.wizard-done path {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+    animation: wizard-draw 0.4s 0.5s ease forwards;
+}
+
+@keyframes wizard-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 900px) {
+    .pain-locator,
+    .visit-options,
+    .booking-wizard .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pain-canvas {
+        height: 380px;
+    }
+}
+
+@media (max-width: 560px) {
+    .booking-wizard {
+        padding: 18px;
+    }
+
+    .wizard-progress li {
+        font-size: 0;
+        gap: 0;
+    }
+
+    .wizard-progress li span {
+        font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wizard-step.active,
+    .wizard-done circle,
+    .wizard-done path {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+}
+
+.booking-wizard [hidden] {
+    display: none !important;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: var(--primary-color);
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+}
+
+.pain-panel {
+    text-align: left;
+}
+
+.pain-canvas.loading-model::after {
+    content: 'Loading model…';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #6b7f8a;
+    font-size: 13px;
+}
+
+.model-credit {
+    grid-column: 1;
+    margin-top: -18px;
+    color: #6b7f8a;
+    font-size: 12px;
+}
+
+.model-credit a {
+    color: inherit;
 }

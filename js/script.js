@@ -217,6 +217,7 @@ function handleFormSubmission(form) {
     const lines = ['Hello RM Physiotherapy, I would like to book a session.'];
     form.querySelectorAll('input, select, textarea').forEach(function (field) {
         if (field.type === 'checkbox' || !field.name) return;
+        if (field.type === 'radio' && !field.checked) return;
         const value = field.value.trim();
         if (value) lines.push(field.name + ': ' + value);
     });
@@ -224,6 +225,7 @@ function handleFormSubmission(form) {
     const url = 'https://wa.me/' + number + '?text=' + encodeURIComponent(lines.join('\n'));
     window.open(url, '_blank', 'noopener');
     showFormSuccess(form, url);
+    form.dispatchEvent(new CustomEvent('booking:sent'));
 }
 
 function showFormSuccess(form, url) {
